@@ -1,13 +1,13 @@
 #!/bin/bash
 
 #updating the apt packages index
-sudo apt update
+sudo apt update 
 
 #Install the Samba package
 sudo apt install samba
 
 #check whether the Samba server is running
-sudo systemctl status smbd
+#sudo systemctl status smbd
 
 #allow incoming UDP connections on ports 137 and 138 and TCP connections on ports 139 and 445
 sudo ufw allow 'Samba'
