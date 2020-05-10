@@ -20,7 +20,7 @@ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.orig
 sudo mkdir -p /srv/samba/anonymous_shares
 
 #set the appropriate permissions on the directory.
-sudo chmod -R 0775 /srv/samba/anonymous_shares
+sudo chmod -R 0775 /srv/samba/anonymous_shares #Change as required
 sudo chown -R nobody:nogroup /srv/samba/anonymous_shares
 
 #Update config from git
