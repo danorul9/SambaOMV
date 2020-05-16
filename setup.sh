@@ -25,8 +25,12 @@ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.orig
 sudo mkdir -p $PublicFolder
 
 #set the appropriate permissions on the directory.
-sudo chmod -R 0777 $PublicFolder 
+sudo chmod -R 0775 $PublicFolder 
 sudo chown -R nobody:nogroup $PublicFolder
+
+#restart the Samba services
+sudo systemctl restart smbd
+sudo systemctl restart nmbd
 
 #Configure Samba Private Share
 #create a samba group called smbgroup for the share.. only members will have access
@@ -44,6 +48,9 @@ sudo usermod -a -G smbgroup $PrivateUser
 #All users who need to access a protected samba share will need to type a password
 #sudo smbpasswd -a $PrivateUser
 echo -ne "$Password\n$Password\n" | sudo smbpasswd -a $PrivateUser
+
+#Enable user
+sudo smbpasswd -e $PrivateUser
 
 #Create a protected share in the /samba directory.
 
