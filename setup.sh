@@ -25,7 +25,7 @@ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.orig
 sudo mkdir -p $PublicFolder
 
 #set the appropriate permissions on the directory.
-sudo chmod -R 0775 $PublicFolder 
+sudo chmod -R 0777 $PublicFolder 
 sudo chown -R nobody:nogroup $PublicFolder
 
 #restart the Samba services
