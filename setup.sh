@@ -5,10 +5,6 @@ PrivateFolder="/mnt/Private"
 PrivateUser="user"
 Password="pass"
 
-# redirect stdout/stderr to a file
-#exec > logfile.txt
-
-
 #updating the apt packages index
 #sudo apt update 
 
@@ -44,7 +40,6 @@ sudo useradd -M $PrivateUser --shell=/bin/false
 sudo usermod -a -G smbgroup $PrivateUser
 
 #All users who need to access a protected samba share will need to type a password
-
 #sudo smbpasswd -a $PrivateUser
 echo -ne "$Password\n$Password\n" | sudo smbpasswd -a $PrivateUser
 
@@ -65,5 +60,3 @@ sudo systemctl restart smbd
 sudo systemctl restart nmbd
 #sudo service smbd restart
 
-# append some data to log file
-#echo value of x is $x >> $log
