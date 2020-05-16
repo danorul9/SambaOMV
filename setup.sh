@@ -3,6 +3,11 @@
 PublicFolder="/mnt/Public"
 PrivateFolder="/mnt/Private"
 PrivateUser="user"
+Password="pass"
+
+# redirect stdout/stderr to a file
+#exec > logfile.txt
+
 
 #updating the apt packages index
 #sudo apt update 
@@ -32,6 +37,7 @@ sudo chown -R nobody:nogroup $PublicFolder
 sudo addgroup smbgroup
 
 #Add a user without home directory and ssh
+#sudo useradd $PrivateUser 
 sudo useradd -M $PrivateUser --shell=/bin/false
 
 #Add a user to the smbgroup
@@ -39,7 +45,8 @@ sudo usermod -a -G smbgroup $PrivateUser
 
 #All users who need to access a protected samba share will need to type a password
 
-sudo smbpasswd -a $PrivateUser
+#sudo smbpasswd -a $PrivateUser
+echo -ne "$Password\n$Password\n" | sudo smbpasswd -a $PrivateUser
 
 #Create a protected share in the /samba directory.
 
@@ -58,3 +65,5 @@ sudo systemctl restart smbd
 sudo systemctl restart nmbd
 #sudo service smbd restart
 
+# append some data to log file
+#echo value of x is $x >> $log
