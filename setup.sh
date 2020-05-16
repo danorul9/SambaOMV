@@ -17,11 +17,11 @@ sudo ufw allow 'Samba'
 sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.orig
 
 #creating a shared samba directory where the files will be stored
-sudo mkdir -p /srv/samba/anonymous_shares
+sudo mkdir -p /mnt/Public
 
 #set the appropriate permissions on the directory.
-sudo chmod -R 0775 /srv/samba/anonymous_shares #Change as required
-sudo chown -R nobody:nogroup /srv/samba/anonymous_shares
+sudo chmod -R 0775 /mnt/Public #Change as required
+sudo chown -R nobody:nogroup /mnt/Public
 
 #Update config from git
 sudo cp ./etc/samba/smb.conf /etc/samba/smb.conf
