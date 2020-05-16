@@ -25,12 +25,13 @@ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.orig
 sudo mkdir -p $PublicFolder
 
 #set the appropriate permissions on the directory.
-sudo chmod -R 0777 $PublicFolder 
 sudo chown -R nobody:nogroup $PublicFolder
+sudo chmod -R 0775 $PublicFolder 
+sudo chgrp sambashare $PublicFolder 
 
 #restart the Samba services
-sudo systemctl restart smbd
-sudo systemctl restart nmbd
+#sudo systemctl restart smbd
+#sudo systemctl restart nmbd
 sudo service smbd restart
 
 #Configure Samba Private Share
@@ -39,7 +40,7 @@ sudo addgroup smbgroup
 
 #Add a user without home directory and ssh
 #sudo useradd -M $PrivateUser --shell=/bin/false
-sudo userdel $PrivateUser
+#sudo userdel $PrivateUser
 sudo useradd $PrivateUser 
 #sudo useradd -M $PrivateUser #--shell=/bin/false
 
@@ -66,7 +67,7 @@ sudo chmod -R 0770 $PrivateFolder
 sudo cp ./etc/samba/smb.conf /etc/samba/smb.conf
 
 #restart the Samba services
-sudo systemctl restart smbd
-sudo systemctl restart nmbd
+#sudo systemctl restart smbd
+#sudo systemctl restart nmbd
 sudo service smbd restart
 
