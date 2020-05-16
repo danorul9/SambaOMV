@@ -30,9 +30,10 @@ sudo chmod -R 0775 $PublicFolder
 sudo chgrp sambashare $PublicFolder 
 
 #restart the Samba services
-#sudo systemctl restart smbd
-#sudo systemctl restart nmbd
+sudo systemctl restart smbd
+sudo systemctl restart nmbd
 sudo service smbd restart
+sudo service nmbd restart
 
 #Configure Samba Private Share
 #create a samba group called smbgroup for the share.. only members will have access
@@ -67,7 +68,8 @@ sudo chmod -R 0770 $PrivateFolder
 sudo cp ./etc/samba/smb.conf /etc/samba/smb.conf
 
 #restart the Samba services
-#sudo systemctl restart smbd
-#sudo systemctl restart nmbd
+sudo systemctl restart smbd
+sudo systemctl restart nmbd
 sudo service smbd restart
+sudo service nmbd restart
 
