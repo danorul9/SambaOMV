@@ -27,8 +27,8 @@ sudo chown -R nobody:nogroup /mnt/Public
 #create a samba group called smbgroup for the share.. only members will have access
 sudo addgroup smbgroup
 
-#Add a user 
-sudo adduser user 
+#Add a user without home directory and ssh
+sudo useradd -M user --shell=/bin/false
 
 #Add a user to the smbgroup
 sudo usermod -a -G smbgroup user
