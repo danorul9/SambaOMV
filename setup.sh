@@ -33,8 +33,10 @@ sudo chown -R nobody:nogroup $PublicFolder
 sudo addgroup smbgroup
 
 #Add a user without home directory and ssh
-#sudo useradd $PrivateUser 
-sudo useradd -M $PrivateUser --shell=/bin/false
+#sudo useradd -M $PrivateUser --shell=/bin/false
+sudo userdel $PrivateUser
+sudo useradd $PrivateUser 
+#sudo useradd -M $PrivateUser #--shell=/bin/false
 
 #Add a user to the smbgroup
 sudo usermod -a -G smbgroup $PrivateUser
