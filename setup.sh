@@ -31,6 +31,7 @@ sudo chown -R nobody:nogroup $PublicFolder
 #restart the Samba services
 sudo systemctl restart smbd
 sudo systemctl restart nmbd
+sudo service smbd restart
 
 #Configure Samba Private Share
 #create a samba group called smbgroup for the share.. only members will have access
@@ -67,5 +68,5 @@ sudo cp ./etc/samba/smb.conf /etc/samba/smb.conf
 #restart the Samba services
 sudo systemctl restart smbd
 sudo systemctl restart nmbd
-#sudo service smbd restart
+sudo service smbd restart
 
